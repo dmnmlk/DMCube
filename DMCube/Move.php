@@ -5,7 +5,6 @@
  */
 class Move
 {
-
 	/**
 	 * Method that gives ability to make array list of $moves in given $cube array
 	 *
@@ -21,6 +20,58 @@ class Move
 		}
 
 		return $cube;
+	}
+
+	/**
+	 * 
+	 *
+	 * @param array $cube
+	 * @return array
+	 */
+	public function makeMove(array $cube, string $move)
+	{
+		return Move::$move($cube);
+	}
+
+	/**
+	 * Function maps number 0-17 to corresponding move
+	 *
+	 * @param integer $number
+	 * @return void
+	 */
+	static public function mapNumberWithMove(int $number)
+	{
+		switch ($number)
+		{
+			case 0: return 'U0';
+			case 1: return 'U1';
+			case 2: return 'U2';
+			case 3: return 'L0';
+			case 4: return 'L1';
+			case 5: return 'L2';
+			case 6: return 'F0';
+			case 7: return 'F1';
+			case 8: return 'F2';
+			case 9: return 'R0';
+			case 10: return 'R1';
+			case 11: return 'R2';
+			case 12: return 'B0';
+			case 13: return 'B1';
+			case 14: return 'B2';
+			case 15: return 'D0';
+			case 16: return 'D1';
+			case 17: return 'D2';
+		}
+	}
+
+	/**
+	 * Returns array of every possible move on Rubik's Cube
+	 *
+	 * @return void
+	 */
+	static public function possibleMoves()
+	{
+		return ['U0', 'U1', 'U2', 'L0', 'L1', 'L2', 'F0', 'F1', 'F2', 'R0', 'R1', 'R2', 'B0', 'B1', 'B2', 'D0', 'D1', 'D2'];
 	}
 
 	/**
@@ -74,7 +125,7 @@ class Move
 		$result[5] = $cube[1];
 		$result[6] = $cube[8];
 		$result[7] = $cube[5];
-		$result[8] = $cube[2];
+		$result[8] = $cube[2]; 
 		$result[9] = $cube[18];
 		$result[10] = $cube[19];
 		$result[11] = $cube[20];

@@ -19,11 +19,16 @@ class Boilerplate
 
 	private function compute()
 	{
- 		$cube = Cube::buildCube();
+		$cubeObj = new Cube();
+		$cube = $cubeObj->buildMixedCube(2);
 
-		$res = Move::movesSeq($cube, ['U0','B2','F1','U0']);
-		//komentarz
-		var_dump($res);
+		$solver = new Solver();
+		$solver->setSolvingMethod(1);
+		$result = $solver->solveCube($cube);
+		$maybeSolved = $solver->isCubeSolved($result);
+
+		var_dump($result);
+		var_dump('Solved? ' . (($maybeSolved)? 'YES' : 'NO'));
 	}
 }
 
